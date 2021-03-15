@@ -3,6 +3,7 @@ package com.spring.blog.bloggingapp.Service;
 import com.spring.blog.bloggingapp.Controller.UserController;
 import com.spring.blog.bloggingapp.Entity.UserEntity;
 import com.spring.blog.bloggingapp.Repository.UserRepository;
+import com.spring.blog.bloggingapp.Request.LoginRequest;
 import com.spring.blog.bloggingapp.Request.UserRequest;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,8 +30,8 @@ public class UserService {
         return userRepository.save(userEntity);
     }
 
-    public ResponseEntity userLogin(String email, String password){
-        Optional<UserEntity> userEntity = userRepository.findByEmailAndPassword(email, password);
+    public ResponseEntity userLogin(LoginRequest loginRequest){
+        Optional<UserEntity> userEntity = userRepository.findByEmailAndPassword(loginRequest.getEmail(), loginRequest.getPassword());
         if (userEntity.isPresent()) {
             return ResponseEntity.ok(userEntity.get());
         } else {

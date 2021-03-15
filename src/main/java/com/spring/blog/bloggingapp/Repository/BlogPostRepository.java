@@ -1,8 +1,6 @@
 package com.spring.blog.bloggingapp.Repository;
 
 import com.spring.blog.bloggingapp.Entity.BlogPostEntity;
-import com.spring.blog.bloggingapp.Request.BlogPostRequest;
-import org.springframework.data.domain.Example;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

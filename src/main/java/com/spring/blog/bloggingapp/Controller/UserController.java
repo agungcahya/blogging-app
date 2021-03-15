@@ -1,6 +1,7 @@
 package com.spring.blog.bloggingapp.Controller;
 
 import com.spring.blog.bloggingapp.Entity.UserEntity;
+import com.spring.blog.bloggingapp.Request.LoginRequest;
 import com.spring.blog.bloggingapp.Request.UserRequest;
 import com.spring.blog.bloggingapp.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,7 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@Controller
+@CrossOrigin
+@RestController
 @RequestMapping("/user-management")
 public class UserController {
 
@@ -26,7 +28,7 @@ public class UserController {
     }
 
     @PostMapping(value = "/user/login")
-    public ResponseEntity addUser(@RequestParam String email, String password){
-        return userService.userLogin(email, password);
+    public ResponseEntity addUser(@RequestBody LoginRequest loginRequest){
+        return userService.userLogin(loginRequest);
     }
 }
